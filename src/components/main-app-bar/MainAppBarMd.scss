@@ -3,6 +3,8 @@
 .main-app-bar-md {
   position: relative;
   z-index: $app-header-z-index;
+  background-color: red;
+  padding: 20px 0px;
 
   .nav-content-wrapper {
     display: grid;
@@ -11,6 +13,45 @@
     grid-gap: 32px;
     align-items: center;
 
+    .search-box {
+      width: 100%;
+      display: flex;
+      // grid-template-columns: 80% auto;
+      justify-content: space-between;
+
+      .input-div {
+        position: relative;
+
+        input {
+          height: 42px;
+          width: 100%;
+          padding: 5px 5px;
+
+          &:focus-visible {
+            outline: -webkit-focus-ring-color auto 0px;
+          }
+        }
+
+        button {
+          position: absolute;
+          background-color: transparent;
+          border: none;
+          right: 10px;
+          top: 10px;
+        }
+      }
+
+      .btn-div {
+
+
+        .search-btn {
+          height: 35px;
+          width: 79px;
+          background-color: transparent;
+          border: none;
+        }
+      }
+    }
   }
 
   @include mediaLg {

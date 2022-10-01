@@ -1,16 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./YoutubeCard.scss";
 const YoutubeCard = ({ item }) => {
-  console.log(item);
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+  console.log(windowSize.innerWidth);
+
+  function getWindowSize() {
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+  }
   return (
-    <div className="card">
+    <div
+      className="card"
+      style={{
+        gridTemplateColumns:
+          windowSize.innerWidth < 500
+            ? `${item.snippet.thumbnails.default.width}px auto`
+            : `${item.snippet.thumbnails.medium.width}px auto`,
+      }}
+    >
       <img
-        src={item.snippet.thumbnails.medium.url}
+        src={windowSize.innerWidth < 500 ? item.snippet.thumbnails.default.url : item.snippet.thumbnails.medium.url}
         alt="Avatar"
         style={{
-          width: `${item.snippet.thumbnails.medium.width}px`,
-          height: `${item.snippet.thumbnails.medium.height}px`,
+          width:
+            windowSize.innerWidth < 500
+              ? `${item.snippet.thumbnails.default.width}px auto`
+              : `${item.snippet.thumbnails.medium.width}px auto`,
+          height:
+            windowSize.innerWidth < 500
+              ? `${item.snippet.thumbnails.default.height}px auto`
+              : `${item.snippet.thumbnails.medium.height}px auto`,
         }}
       />
       <div className="container">
@@ -18,7 +49,7 @@ const YoutubeCard = ({ item }) => {
           <b>{item.snippet.title}</b>
         </h4>
         <div className="desc">{item.snippet.channelTitle}</div>
-        <p>{item.snippet.description}</p>
+        <p className="vedio-desc">{item.snippet.description}</p>
       </div>
     </div>
   );
