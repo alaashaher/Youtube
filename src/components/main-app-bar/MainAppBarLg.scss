@@ -10,16 +10,41 @@
   .nav-content-wrapper {
     display: grid;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 70%;
     justify-content: space-between;
     grid-gap: 32px;
     align-items: center;
     padding: 10px 0px;
+
     .logo {
       img {
         width: 150px;
       }
     }
+
+    .search-box {
+      width: 100%;
+      display: flex;
+      input {
+        height: 35px;
+        width: 50%;
+
+        &:focus-visible {
+          outline: -webkit-focus-ring-color auto 0px;
+        }
+      }
+
+      .btn-div {
+        
+
+        .search-btn {
+          height: 35px;
+          width: 79px;
+        }
+      }
+    }
+
+
 
   }
 

@@ -1,16 +1,18 @@
 import React, { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import HomeContext from "../../contexts/home-context/HomeProvider";
 import { getFromAPI } from "../../api/apis";
 import YoutubeCard from "../../components/youtube-card/YoutubeCard";
 import Loading from "../../components/loading/Loading";
 
-const HomePage = () => {
-  const { respons, setRespons, searchText } = useContext(HomeContext);
+const ResultPage = () => {
+  const location = useParams();
+  const { respons, setRespons } = useContext(HomeContext);
   useEffect(() => {
     const getData = async () => {
       try {
         const res = await getFromAPI(
-          `search?part=snippet&q=${searchText}&type=video&key=AIzaSyAcg31XJ2RDXTYDXQF-FmG8I6cTKDMvo2Y`
+          `search?part=snippet&q=${location.id}&type=video&key=AIzaSyAcg31XJ2RDXTYDXQF-FmG8I6cTKDMvo2Y`
         );
         // console.log(res);
         if (res.status === 200) {
@@ -19,7 +21,7 @@ const HomePage = () => {
       } catch (error) {}
     };
     getData();
-  }, [setRespons, searchText]);
+  }, [setRespons, location.id]);
 
   const renderResultCard = () => {
     if (!respons || respons?.length === 0) {
@@ -28,7 +30,7 @@ const HomePage = () => {
           className="empty-data"
           style={{ margin: "auto", width: "max-content" }}
         >
-         <Loading/>
+          <Loading />
         </div>
       );
     }
@@ -39,9 +41,16 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <div className="custom-container">{renderResultCard()}</div>
+      <div className="custom-container">
+        <div className="info-div">
+          <div className="result-count">
+            About {respons?.length} Filtered Result
+          </div>
+        </div>
+        {renderResultCard()}
+      </div>
     </div>
   );
 };
 
-export default HomePage;
+export default ResultPage;
