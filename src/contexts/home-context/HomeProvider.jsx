@@ -5,16 +5,21 @@ const INITIAL_VALUES = {
   setRespons: (v) => {},
   searchText: "",
   setSearchText: (v) => {},
+  loadingRes: false,
+  setLoadingRes: (v) => {},
 };
 const HomeContext = createContext(INITIAL_VALUES);
 
 export const HomeProivder = ({ children }) => {
+  const [loadingRes, setLoadingRes] = useState(INITIAL_VALUES.loadingRes);
   const [respons, setRespons] = useState(INITIAL_VALUES.respons);
   const [searchText, setSearchText] = useState(INITIAL_VALUES.searchText);
 
   return (
     <HomeContext.Provider
       value={{
+        loadingRes,
+        setLoadingRes,
         respons,
         setRespons,
         searchText,

@@ -14,7 +14,7 @@ const YoutubeCard = ({ item }) => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
-  console.log(windowSize.innerWidth);
+  // console.log(windowSize.innerWidth);
 
   function getWindowSize() {
     const { innerWidth, innerHeight } = window;
@@ -31,7 +31,11 @@ const YoutubeCard = ({ item }) => {
       }}
     >
       <img
-        src={windowSize.innerWidth < 500 ? item.snippet.thumbnails.default.url : item.snippet.thumbnails.medium.url}
+        src={
+          windowSize.innerWidth < 500
+            ? item.snippet.thumbnails.default.url
+            : item.snippet.thumbnails.medium.url
+        }
         alt="Avatar"
         style={{
           width:

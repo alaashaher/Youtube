@@ -1,21 +1,22 @@
-@import '../../scss/config';
+@import "../../scss/config";
 
 .main-app-bar-md {
   position: relative;
   z-index: $app-header-z-index;
   background-color: red;
-  padding: 20px 0px;
+  // padding: 20px 0px;
 
   .nav-content-wrapper {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 1fr;
     justify-content: space-between;
     grid-gap: 32px;
     align-items: center;
 
     .search-box {
       width: 100%;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto;
       // grid-template-columns: 80% auto;
       justify-content: space-between;
 
@@ -26,7 +27,10 @@
           height: 42px;
           width: 100%;
           padding: 5px 5px;
-
+          border: 0;
+          outline: 0;
+          border-radius: 4px;
+          padding: 4px 12px;
           &:focus-visible {
             outline: -webkit-focus-ring-color auto 0px;
           }
@@ -38,12 +42,15 @@
           border: none;
           right: 10px;
           top: 10px;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
 
       .btn-div {
-
-
+        display: flex;
+        align-items: center;
         .search-btn {
           height: 35px;
           width: 79px;

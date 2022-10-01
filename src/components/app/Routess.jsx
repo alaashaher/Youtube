@@ -7,7 +7,7 @@ import ResultPage from "../../page/result-page/ResultPage";
 const Routess = () => {
   const routes = useRoutes([
     { path: "/", element: <HomePage /> },
-    { path: "/result/search/:id", element: <ResultPage /> },
+    { path: "/result", element: <ResultPage /> },
     { path: "*", element: <NotFoundPage /> },
   ]);
   return routes;

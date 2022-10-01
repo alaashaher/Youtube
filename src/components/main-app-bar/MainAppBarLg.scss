@@ -1,4 +1,4 @@
-@import '../../scss/config';
+@import "../../scss/config";
 
 .main-app-bar-lg {
   position: fixed;
@@ -23,11 +23,16 @@
     }
 
     .search-box {
-      width: 100%;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      max-width: 632px;
+      border: 1px solid #ddd;
       input {
         height: 35px;
-        width: 50%;
+        width: 100%;
+        padding: 4px 12px;
+        border: 0;
+        outline: 0;
 
         &:focus-visible {
           outline: -webkit-focus-ring-color auto 0px;
@@ -35,17 +40,16 @@
       }
 
       .btn-div {
-        
-
         .search-btn {
           height: 35px;
           width: 79px;
+          border: 0;
+          outline: 0;
+          padding: 8px 12px;
+          border-radius: 0 2px 2px 0;
         }
       }
     }
-
-
-
   }
 
   display: none;

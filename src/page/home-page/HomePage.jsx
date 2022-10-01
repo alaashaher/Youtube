@@ -1,40 +1,27 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import HomeContext from "../../contexts/home-context/HomeProvider";
-import { getFromAPI } from "../../api/apis";
 import YoutubeCard from "../../components/youtube-card/YoutubeCard";
 import Loading from "../../components/loading/Loading";
 
 const HomePage = () => {
-  const { respons, setRespons, searchText } = useContext(HomeContext);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await getFromAPI(
-          `search?part=snippet&q=${searchText}&type=video&key=AIzaSyAcg31XJ2RDXTYDXQF-FmG8I6cTKDMvo2Y`
-        );
-        // console.log(res);
-        if (res.status === 200) {
-          setRespons(res.data.items);
-        } else setRespons([]);
-      } catch (error) {}
-    };
-    getData();
-  }, [setRespons, searchText]);
+  const { respons, loadingRes } = useContext(HomeContext);
 
   const renderResultCard = () => {
-    if (!respons || respons?.length === 0) {
+    if (loadingRes) {
       return (
         <div
           className="empty-data"
           style={{ margin: "auto", width: "max-content" }}
         >
-         <Loading/>
+          <Loading />
         </div>
       );
-    }
-    return respons.map((item, index) => (
-      <YoutubeCard key={index} item={item} />
-    ));
+    } else if (respons?.length === 0) {
+      return <h1>No data found!!!</h1>;
+    } else if (respons?.length > 0)
+      return respons.map((item, index) => (
+        <YoutubeCard key={index} item={item} />
+      ));
   };
 
   return (
