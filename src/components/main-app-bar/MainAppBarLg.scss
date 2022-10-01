@@ -1,0 +1,31 @@
+@import '../../scss/config';
+
+.main-app-bar-lg {
+  position: fixed;
+  z-index: 999999;
+  width: 100%;
+  top: 0px;
+  background-color: #fff;
+
+  .nav-content-wrapper {
+    display: grid;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    grid-gap: 32px;
+    align-items: center;
+    padding: 10px 0px;
+    .logo {
+      img {
+        width: 150px;
+      }
+    }
+
+  }
+
+  display: none;
+
+  @include mediaLg {
+    display: grid;
+  }
+}

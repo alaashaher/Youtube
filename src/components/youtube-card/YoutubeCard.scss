@@ -1,0 +1,14 @@
+.card {
+    display: grid;
+    grid-template-columns: 350px auto;
+    margin: 20px auto;
+
+    .container {
+        padding: 2px 16px;
+        width: 80%;
+        .desc {
+            display: grid;
+            grid-template-columns: repeat(3, ifr);
+        }
+    }
+}

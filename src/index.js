@@ -4,6 +4,9 @@ import App from './components/app/App';
 import { HomeProivder } from './contexts/home-context/HomeProvider';
 import reportWebVitals from './reportWebVitals';
 
+import './scss/index.scss';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

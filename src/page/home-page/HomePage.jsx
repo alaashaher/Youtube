@@ -18,7 +18,7 @@ const HomePage = () => {
       } catch (error) {}
     };
     getData();
-  }, []);
+  }, [setRespons]);
 
   const renderResultCard = () => {
     if (!respons || respons?.length === 0) {
@@ -46,10 +46,16 @@ const HomePage = () => {
         </div>
       );
     }
-    return respons.map((item, index) => <YoutubeCard key={index} item={item} />);
+    return respons.map((item, index) => (
+      <YoutubeCard key={index} item={item} />
+    ));
   };
 
-  return <div>{renderResultCard()}</div>;
+  return (
+    <div className="home-page">
+      <div className="custom-container">{renderResultCard()}</div>
+    </div>
+  );
 };
 
 export default HomePage;

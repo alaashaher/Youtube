@@ -1,0 +1,19 @@
+@import '../../scss/config';
+
+.main-app-bar-md {
+  position: relative;
+  z-index: $app-header-z-index;
+
+  .nav-content-wrapper {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    grid-gap: 32px;
+    align-items: center;
+
+  }
+
+  @include mediaLg {
+    display: none;
+  }
+}

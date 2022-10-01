@@ -1,0 +1,31 @@
+#recaptcha-container {
+  display: none;
+}
+@import './config';
+
+
+html {
+  color: $main-black-color;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+  @include custom-scrollbar;
+}
+
+.App {
+  min-height: 100vh;
+  background-color: #f7f8fb00;
+  margin: 0;
+  padding: 0 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-top: 100px;
+  .home-page {
+    background-color: #f8f7f7;
+    padding: 50px 0px;
+  }
+}
+

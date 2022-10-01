@@ -1,0 +1,258 @@
+$main-black-color: #595f6f;
+$main-app-color: #1e82d6;
+$secondary-app-color: #ecb11c;
+
+$headerMd-height: 62px;
+$headerLg-height: 72px;
+$headerXlg-height: 82px;
+$headerXXlg-height: 92px;
+
+@mixin mainAppBarHeight {
+  height: $headerMd-height;
+  @include mediaLg {
+    height: $headerLg-height;
+  }
+  @include mediaXlg {
+    height: $headerXlg-height;
+  }
+  @include mediaXXlg {
+    height: $headerXXlg-height;
+  }
+}
+
+@mixin minusMainAppBarHeight {
+  top: -$headerMd-height;
+  @include mediaLg {
+    top: -$headerLg-height;
+  }
+  @include mediaXlg {
+    top: -$headerXlg-height;
+  }
+  @include mediaXXlg() {
+    top: -$headerXXlg-height;
+  }
+}
+
+$app-header-z-index: 99999;
+$backdrop-z-index: 100;
+$dropDownMenu-z-index: 200;
+$focusedTextArea-z-index: 300;
+$miniDropdown-z-index: 400;
+$modalWrapper-z-index: 500;
+$postModalWrapper-z-index: 499;
+
+@mixin customPaper {
+  border-radius: 4px;
+  .myPaperHeader {
+    padding: 14px 16px;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: start;
+    grid-gap: 6px;
+    font-size: 20px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  &.black {
+    .myPaperHeader {
+      background-color: #151515;
+      color: $black-primary-color;
+    }
+  }
+  &.light {
+    .myPaperHeader {
+      background-color: $white-primary-color;
+      color: #fff;
+    }
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::selection {
+	background-color: rgba(#3fd4e2, 0.4);
+	color: #424242;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
+a {
+  color: $main-black-color;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #d5d5d5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #5f8b9e8f;
+    background-color: #b5b5b5;
+    border-radius: 10px;
+
+    &:hover {
+      background: #aaa;
+    }
+  }
+}
+
+// custom break points
+@mixin mediaXsm {
+  @media only screen and (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin mediaSm {
+  @media only screen and (min-width: 375px) {
+    @content;
+  }
+}
+
+@mixin mediaSmd {
+  @media only screen and (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin mediaMd {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mediaLg {
+  @media only screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin mediaLLg {
+  @media only screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mediaXlg {
+  // @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1366px) {
+    @content;
+  }
+}
+
+@mixin mediaXXlg {
+  @media only screen and (min-width: 1400px) {
+    @content;
+  }
+}
+@mixin mediaXXXlg {
+  @media only screen and (min-width: 1600px) {
+    @content;
+  }
+}
+
+
+.custom-container {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include mediaSmd {
+    max-width: 540px;
+  }
+
+  @include mediaMd {
+    max-width: 720px;
+  }
+
+  @include mediaLg {
+    max-width: 960px;
+  }
+
+  @include mediaXlg {
+    max-width: 1140px;
+  }
+
+  @include mediaXXlg {
+    max-width: 1280px;
+  }
+  @include mediaXXXlg {
+    max-width: 1540px;
+  }
+}
+
+@mixin topBottomAnimation {
+  animation: topBottomAnimation 3s linear infinite;
+
+  @keyframes topBottomAnimation {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(6px);
+    }
+    30% {
+      transform: translateY(6px);
+    }
+    75% {
+      transform: translateY(-6px);
+    }
+    80% {
+      transform: translateY(-6px);
+    }
+  }
+}
+@mixin bounce_animation {
+  animation: bounce_me 3s linear infinite;
+
+  @keyframes bounce_me {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(3px);
+    }
+    32% {
+      transform: translateY(3px);
+    }
+    75% {
+      transform: translateY(-3px);
+    }
+    82% {
+      transform: translateY(-3px);
+    }
+  }
+}
